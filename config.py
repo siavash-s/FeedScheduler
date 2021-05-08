@@ -31,6 +31,10 @@ class Config(BaseSettings):
 
     routing_key: str = Field("task", env="ROUTING_KEY", description="RabbitMQ routing key for sending tasks")
 
+    publish_interval: PositiveInt = Field(
+        10, env="PUBLISH_INTERVAL", description="time interval between each tasks publish"
+    )
+
 
 settings = None
 
