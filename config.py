@@ -1,6 +1,6 @@
 from pydantic import (
     BaseSettings,
-    Field
+    Field, RedisDsn
 )
 from enum import Enum
 
@@ -11,6 +11,10 @@ class Config(BaseSettings):
         debug = "DEBUG"
         warning = "WARNING"
     log_level: _LogLevel = Field('INFO', env='LOG_LEVEL')
+
+    redis_url: RedisDsn = Field(..., env="REDIS_URL")
+
+    redis_channels_set: str = Field("channels", env="REDIS_CHANNELS_SET")
 
 
 settings = None
