@@ -23,7 +23,7 @@ class ActiveChannelSet(MutableSet):
          the SSCAN implementation can get a little tricky(not impossible).
         """
         return iter([
-            str(member) for member in self.redis.smembers(self.redis_set_name)
+            member.decode() for member in self.redis.smembers(self.redis_set_name)
         ])
 
     def __len__(self):
